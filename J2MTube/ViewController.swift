@@ -125,17 +125,21 @@ class ViewController: NSViewController, NSControlTextEditingDelegate {
         }
         
         
-        if reqTypeBtn.indexOfSelectedItem == 1 {
-            if let query = url?.query {
-                urlString = urlString.replacingOccurrences(of: query, with: "")
-                if urlString.hasSuffix("?") {
-                    urlString.removeLast()
+        if reqTypeBtn.indexOfSelectedItem == 1 {            
+            request = URLRequest(url: URL(string: urlString)!, cachePolicy: .useProtocolCachePolicy, timeoutInterval: 30)
+            J2MURLRequestBody = self.bodyTextView.string
+
+            if let dict = J2MURLRequestBody.toDict(){
+                let body = dict
+                if !JSONSerialization.isValidJSONObject(body){
+                    print("Invalid type in JSON ")
+                    return
                 }
-                request = URLRequest(url: URL(string: urlString)!, cachePolicy: .useProtocolCachePolicy, timeoutInterval: 30)
-                if let httpBody = query.data(using: .utf8) {
-                    print("httpBody query = \(query)")
-                    request.httpBody = httpBody
-                }
+                let bodyData = try? JSONSerialization.data(
+                    withJSONObject: body,
+                    options: []
+                )
+                request.httpBody = bodyData
             }
             request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
             request.httpMethod = "POST"
