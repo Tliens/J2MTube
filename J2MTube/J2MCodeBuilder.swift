@@ -909,6 +909,26 @@ class J2MCodeBuilder: NSObject {
         return comment
     }
 }
+var J2MURLRequestHeader =
+"""
+{
+    "AppId":"com.funlink.lfg",
+    "Platform":"iOS",
+    "AppVersion":"2.3.0",
+    "Lang":"en",
+    "Device-ID":"A76369B9-B296-45DA-8AC2-81C794C95BAD",
+    "Time-Zone": "E8",
+    "token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NzkwNDczMDgsImlhdCI6MTY0NzUxMTMwOCwidXNlcl9pZCI6NDAwMDAyNTYxfQ._9zcGsjfizjpY7OIc8p0dTgYHfGia-_NTk1-jBiVI44"
+}
+"""
+
+var J2MURLRequestBody =
+"""
+{
+
+}
+"""
+
 
 // MARK: - Config
 

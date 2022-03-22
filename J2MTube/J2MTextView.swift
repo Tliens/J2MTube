@@ -15,6 +15,10 @@ class J2MTextView: NSTextView {
         super.init(coder: coder)
         let attributes = [NSAttributedString.Key.foregroundColor : NSColor.placeholderTextColor, NSAttributedString.Key.font : NSFont.systemFont(ofSize: 15)]
         placeHolderAttriStr = NSAttributedString(string: "Input json here...", attributes: attributes)
+        self.isAutomaticQuoteSubstitutionEnabled = false
+        self.isAutomaticDashSubstitutionEnabled = false
+        self.isAutomaticTextReplacementEnabled = false
+
     }
     
     override func draw(_ dirtyRect: NSRect) {

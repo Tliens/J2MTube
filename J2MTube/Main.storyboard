@@ -821,7 +821,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="522" height="542"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
-                                                <textView importsGraphics="NO" richText="NO" verticallyResizable="YES" findStyle="bar" incrementalSearchingEnabled="YES" spellingCorrection="YES" smartInsertDelete="YES" id="aic-72-SvK" customClass="J2MTextView" customModule="J2MTube" customModuleProvider="target">
+                                                <textView importsGraphics="NO" richText="NO" verticallyResizable="YES" findStyle="bar" incrementalSearchingEnabled="YES" smartInsertDelete="YES" id="aic-72-SvK" customClass="J2MTextView" customModule="J2MTube" customModuleProvider="target">
                                                     <rect key="frame" x="0.0" y="0.0" width="522" height="542"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <color key="textColor" red="0.016804177310000001" green="0.19835099580000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1079,12 +1079,12 @@
                                 <constraints>
                                     <constraint firstAttribute="width" constant="104" id="ScQ-0x-Rnc"/>
                                 </constraints>
-                                <popUpButtonCell key="cell" type="push" title="Class" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="YKu-vi-06h" id="rbr-it-mMU">
+                                <popUpButtonCell key="cell" type="push" title="Class" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="YKu-vi-06h" id="rbr-it-mMU">
                                     <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="menu"/>
                                     <menu key="menu" id="WDr-dl-pWN">
                                         <items>
-                                            <menuItem title="Class" id="YKu-vi-06h"/>
+                                            <menuItem title="Class" state="on" id="YKu-vi-06h"/>
                                             <menuItem title="Struct" id="niH-S1-ZJj"/>
                                         </items>
                                     </menu>
@@ -1139,11 +1139,13 @@
                     </view>
                     <connections>
                         <outlet property="authorNameTF" destination="svt-HM-ZGk" id="3rO-BY-nk7"/>
+                        <outlet property="bodyTextView" destination="Ydt-WN-3PY" id="TgZ-dJ-SBF"/>
                         <outlet property="codeTypeBtn" destination="4t2-ao-Tp6" id="bJV-CH-a7x"/>
                         <outlet property="generateComment" destination="pik-tY-s87" id="KFq-rj-waY"/>
                         <outlet property="generateFileBtn" destination="4Sj-xp-ugz" id="Dzm-Aa-BxE"/>
                         <outlet property="hTextView" destination="MAd-gg-pXw" id="btc-Pd-lZ4"/>
                         <outlet property="hTextViewHeightPriority" destination="4mt-nb-BwJ" id="Lb4-Lj-5t8"/>
+                        <outlet property="headTextView" destination="vFu-0O-l5p" id="kUe-4Y-tqf"/>
                         <outlet property="jsonTextView" destination="aic-72-SvK" id="J2t-Ut-HxA"/>
                         <outlet property="jsonTypeBtn" destination="oyY-SX-ZBr" id="ecz-qD-nA3"/>
                         <outlet property="mTextView" destination="PTz-y3-uNa" id="UPy-E7-otq"/>

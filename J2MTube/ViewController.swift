@@ -27,6 +27,9 @@ class ViewController: NSViewController, NSControlTextEditingDelegate {
     @IBOutlet weak var swiftTypeBtn: NSPopUpButton!
     /// cache key
 
+    @IBOutlet var headTextView: NSTextView!
+    @IBOutlet var bodyTextView: NSTextView!
+    
     let LastInputURLCacheKey = "LastInputURLCacheKey"
     let SuperClassNameCacheKey = "SuperClassNameCacheKey"
     let RootModelNameCacheKey = "RootModelNameCacheKey"
@@ -113,6 +116,14 @@ class ViewController: NSViewController, NSControlTextEditingDelegate {
         let session = URLSession.shared
         let url = URL(string: urlString)
         var request = URLRequest(url: url!, cachePolicy: .useProtocolCachePolicy, timeoutInterval: 30)
+        
+        
+        if let dict = J2MURLRequestHeader.toDict(){
+            for key in dict.keys {
+                request.addValue(dict[key] as! String, forHTTPHeaderField: key)
+            }
+        }
+        
         
         if reqTypeBtn.indexOfSelectedItem == 1 {
             if let query = url?.query {
@@ -358,6 +369,22 @@ class ViewController: NSViewController, NSControlTextEditingDelegate {
         swiftTypeBtn.selectItem(at: UserDefaults.standard.integer(forKey: SwiftTypesCacheKey))
         generateFileBtn.state = UserDefaults.standard.bool(forKey: ShouldGenerateFileCacheKey) ? .on : .off
         generateComment.state = UserDefaults.standard.bool(forKey: ShouldGenerateCommentCacheKey) ? .on : .off
+        
+        
+        let attrString = NSAttributedString(string: J2MURLRequestHeader)
+        self.headTextView.textStorage?.setAttributedString(attrString)
+        self.headTextView.textStorage?.foregroundColor = .gray
+        self.headTextView.isAutomaticQuoteSubstitutionEnabled = false
+        self.headTextView.isAutomaticDashSubstitutionEnabled = false
+        self.headTextView.isAutomaticTextReplacementEnabled = false
+        
+        let attrString2 = NSAttributedString(string: J2MURLRequestBody)
+        self.bodyTextView.textStorage?.setAttributedString(attrString2)
+        self.bodyTextView.textStorage?.foregroundColor = .gray
+        self.bodyTextView.isAutomaticQuoteSubstitutionEnabled = false
+        self.bodyTextView.isAutomaticDashSubstitutionEnabled = false
+        self.bodyTextView.isAutomaticTextReplacementEnabled = false
+        
     }
     
     /// save cache
