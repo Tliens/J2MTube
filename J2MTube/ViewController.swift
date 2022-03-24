@@ -41,6 +41,8 @@ class ViewController: NSViewController, NSControlTextEditingDelegate {
     let GenerateFilePathCacheKey = "GenerateFilePathCacheKey"
     let ShouldGenerateCommentCacheKey = "ShouldGenerateCommentCacheKey"
     let SwiftTypesCacheKey = "SwiftTypesCacheKey"
+    
+    let LastRequestBodyCacheKey = "LastRequestBodyCacheKey"
 
     var builder = J2MCodeBuilder()
 
@@ -125,9 +127,10 @@ class ViewController: NSViewController, NSControlTextEditingDelegate {
         }
         
         
-        if reqTypeBtn.indexOfSelectedItem == 1 {            
+        if reqTypeBtn.indexOfSelectedItem == 1 {
             request = URLRequest(url: URL(string: urlString)!, cachePolicy: .useProtocolCachePolicy, timeoutInterval: 30)
             J2MURLRequestBody = self.bodyTextView.string
+            UserDefaults.standard.set(J2MURLRequestBody , forKey: LastRequestBodyCacheKey)
 
             if let dict = J2MURLRequestBody.toDict(){
                 let body = dict
@@ -382,6 +385,8 @@ class ViewController: NSViewController, NSControlTextEditingDelegate {
         self.headTextView.isAutomaticDashSubstitutionEnabled = false
         self.headTextView.isAutomaticTextReplacementEnabled = false
         
+        J2MURLRequestBody = UserDefaults.standard.string(forKey: LastRequestBodyCacheKey) ?? "{\n\n}"
+
         let attrString2 = NSAttributedString(string: J2MURLRequestBody)
         self.bodyTextView.textStorage?.setAttributedString(attrString2)
         self.bodyTextView.textStorage?.foregroundColor = .gray
